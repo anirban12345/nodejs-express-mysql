@@ -9,7 +9,7 @@ const PoliceStation = function(ps) {
 };
 
 PoliceStation.create = (newPoliceStation, result) => {
-  sql.query("INSERT INTO tutorials SET ?", newPoliceStation, (err, res) => {
+  sql.query("INSERT INTO pstation SET ?", newPoliceStation, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
@@ -54,13 +54,13 @@ PoliceStation.getAll = (ps_id, result) => {
       return;
     }
 
-    console.log("tutorials: ", res);
+    console.log("pstation: ", res);
     result(null, res);
   });
 };
 
 PoliceStation.getAllPublished = result => {
-  sql.query("SELECT * FROM tutorials WHERE published=true", (err, res) => {
+  sql.query("SELECT * FROM pstation WHERE published=true", (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);
@@ -74,7 +74,7 @@ PoliceStation.getAllPublished = result => {
 
 PoliceStation.updateById = (id, tutorial, result) => {
   sql.query(
-    "UPDATE tutorials SET title = ?, description = ?, published = ? WHERE id = ?",
+    "UPDATE pstation SET title = ?, description = ?, published = ? WHERE id = ?",
     [tutorial.title, tutorial.description, tutorial.published, id],
     (err, res) => {
       if (err) {
@@ -96,7 +96,7 @@ PoliceStation.updateById = (id, tutorial, result) => {
 };
 
 PoliceStation.remove = (id, result) => {
-  sql.query("DELETE FROM tutorials WHERE id = ?", id, (err, res) => {
+  sql.query("DELETE FROM pstation WHERE id = ?", id, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);
@@ -115,14 +115,14 @@ PoliceStation.remove = (id, result) => {
 };
 
 PoliceStation.removeAll = result => {
-  sql.query("DELETE FROM tutorials", (err, res) => {
+  sql.query("DELETE FROM pstation", (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);
       return;
     }
 
-    console.log(`deleted ${res.affectedRows} tutorials`);
+    console.log(`deleted ${res.affectedRows} pstation`);
     result(null, res);
   });
 };

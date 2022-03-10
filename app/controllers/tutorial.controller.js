@@ -10,14 +10,14 @@ exports.create = (req, res) => {
   }
 
   // Create a PoliceStation
-  const tutorial = new PoliceStation({
+  const pstation = new PoliceStation({
     title: req.body.title,
     description: req.body.description,
     published: req.body.published || false
   });
 
   // Save PoliceStation in the database
-  PoliceStation.create(tutorial, (err, data) => {
+  PoliceStation.create(pstation, (err, data) => {
     if (err)
       res.status(500).send({
         message:
@@ -35,7 +35,7 @@ exports.findAll = (req, res) => {
     if (err)
       res.status(500).send({
         message:
-          err.message || "Some error occurred while retrieving tutorials."
+          err.message || "Some error occurred while retrieving pstations."
       });
     else res.send(data);
   });
@@ -64,7 +64,7 @@ exports.findAllPublished = (req, res) => {
     if (err)
       res.status(500).send({
         message:
-          err.message || "Some error occurred while retrieving tutorials."
+          err.message || "Some error occurred while retrieving pstations."
       });
     else res.send(data);
   });
@@ -123,7 +123,7 @@ exports.deleteAll = (req, res) => {
     if (err)
       res.status(500).send({
         message:
-          err.message || "Some error occurred while removing all tutorials."
+          err.message || "Some error occurred while removing all pstations."
       });
     else res.send({ message: `All PoliceStations were deleted successfully!` });
   });

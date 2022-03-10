@@ -3,25 +3,25 @@ module.exports = app => {
 
   var router = require("express").Router();
 
-  // Create a new Tutorial
+  // Create a new PoliceStation
   router.post("/", policestation.create);
 
-  // Retrieve all Tutorials
+  // Retrieve all PoliceStations
   router.get("/", policestation.findAll);
 
-  // Retrieve all published Tutorials
+  // Retrieve all published PoliceStations
   router.get("/published", policestation.findAllPublished);
 
-  // Retrieve a single Tutorial with id
+  // Retrieve a single PoliceStation with id
   router.get("/:id", policestation.findOne);
 
-  // Update a Tutorial with id
+  // Update a PoliceStation with id
   router.put("/:id", policestation.update);
 
-  // Delete a Tutorial with id
+  // Delete a PoliceStation with id
   router.delete("/:id", policestation.delete);
 
-  // Delete all Tutorials
+  // Delete all PoliceStations
   router.delete("/", policestation.deleteAll);
 
   app.use('/api/policestation', router);
