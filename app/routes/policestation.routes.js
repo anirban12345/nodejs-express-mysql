@@ -1,5 +1,5 @@
 module.exports = app => {
-  const policestation = require("../controllers/tutorial.controller.js");
+  const policestation = require("../controllers/policestation.controller.js");
 
   var router = require("express").Router();
 

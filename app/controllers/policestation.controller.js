@@ -1,4 +1,4 @@
-const PoliceStation = require("../models/tutorial.model.js");
+const PoliceStation = require("../models/policestation.model.js");
 
 // Create and Save a new PoliceStation
 exports.create = (req, res) => {
