@@ -2,6 +2,9 @@ const PoliceStation = require("../models/policestation.model.js");
 
 // Create and Save a new PoliceStation
 exports.create = (req, res) => {
+
+  //console.log(req);
+
   // Validate request
   if (!req.body) {
     res.status(400).send({
@@ -11,10 +14,13 @@ exports.create = (req, res) => {
 
   // Create a PoliceStation
   const pstation = new PoliceStation({
-    title: req.body.title,
-    description: req.body.description,
-    published: req.body.published || false
+    ps_name: req.body.ps_name,
+    ps_address: req.body.ps_address,
+    ps_emailid: req.body.ps_emailid,
+    ps_phoneno: req.body.ps_phoneno
   });
+
+  //console.log(pstation);
 
   // Save PoliceStation in the database
   PoliceStation.create(pstation, (err, data) => {
@@ -29,9 +35,9 @@ exports.create = (req, res) => {
 
 // Retrieve all PoliceStations from the database (with condition).
 exports.findAll = (req, res) => {
-  const title = req.query.title;
+  const ps_name = req.query.ps_name;
 
-  PoliceStation.getAll(title, (err, data) => {
+  PoliceStation.getAll(ps_name, (err, data) => {
     if (err)
       res.status(500).send({
         message:
