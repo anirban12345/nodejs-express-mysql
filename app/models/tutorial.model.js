@@ -73,10 +73,10 @@ PoliceStation.getAllPublished = result => {
   });
 };
 
-PoliceStation.updateById = (id, tutorial, result) => {
+PoliceStation.updateById = (id, pstation, result) => {
   sql.query(
-    "UPDATE pstation SET title = ?, description = ?, published = ? WHERE id = ?",
-    [tutorial.title, tutorial.description, tutorial.published, id],
+    "UPDATE pstation SET ps_name = ?, ps_address = ?, ps_emailid = ?, ps_phoneno = ? WHERE ps_id = ?",
+    [pstation.ps_name, pstation.ps_address, pstation.ps_emailid, pstation.ps_phoneno , id],
     (err, res) => {
       if (err) {
         console.log("error: ", err);
@@ -90,14 +90,14 @@ PoliceStation.updateById = (id, tutorial, result) => {
         return;
       }
 
-      console.log("updated PoliceStation: ", { id: id, ...tutorial });
-      result(null, { id: id, ...tutorial });
+      console.log("updated PoliceStation: ", { id: id, ...pstation });
+      result(null, { id: id, ...pstation });
     }
   );
 };
 
 PoliceStation.remove = (id, result) => {
-  sql.query("DELETE FROM pstation WHERE id = ?", id, (err, res) => {
+  sql.query("DELETE FROM pstation WHERE ps_id = ?", id, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);

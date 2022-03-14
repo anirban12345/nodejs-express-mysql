@@ -3,7 +3,7 @@ const PoliceStation = require("../models/tutorial.model.js");
 // Create and Save a new PoliceStation
 exports.create = (req, res) => {
 
-  console.log(req);
+  //console.log(req);
 
   // Validate request
   if (!req.body) {
@@ -19,6 +19,8 @@ exports.create = (req, res) => {
     ps_emailid: req.body.ps_emailid,
     ps_phoneno: req.body.ps_phoneno
   });
+
+  //console.log(pstation);
 
   // Save PoliceStation in the database
   PoliceStation.create(pstation, (err, data) => {
