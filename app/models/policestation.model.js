@@ -42,7 +42,7 @@ PoliceStation.findById = (ps_id, result) => {
 };
 
 PoliceStation.getAll = (ps_id, result) => {
-  let query = "SELECT * FROM pstation";
+  let query = "SELECT * FROM pstation order by ps_name asc";
 
   if (ps_id) {
     query += ` WHERE ps_id = '%${ps_id}%'`;
