@@ -6,6 +6,7 @@ const PoliceStation = function(ps) {
   this.ps_address = ps.ps_address;
   this.ps_emailid = ps.ps_emailid;
   this.ps_phoneno = ps.ps_phoneno;
+  //console.log(ps);
 };
 
 PoliceStation.create = (newPoliceStation, result) => {
