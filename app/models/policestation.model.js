@@ -22,6 +22,25 @@ PoliceStation.create = (newPoliceStation, result) => {
   });
 };
 
+PoliceStation.findByPSName = (ps_name, result) => {
+  sql.query(`SELECT * FROM pstation WHERE ps_name like '%${ps_name}%'`, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(err, null);
+      return;
+    }
+
+    if (res.length) {
+      console.log("found pstation: ", res[0]);
+      result(null, res[0]);
+      return;
+    }
+
+    // not found PoliceStation with the id
+    result({ kind: "not_found" }, null);
+  });
+};
+
 PoliceStation.findById = (ps_id, result) => {
   sql.query(`SELECT * FROM pstation WHERE ps_id = ${ps_id}`, (err, res) => {
     if (err) {
@@ -41,11 +60,11 @@ PoliceStation.findById = (ps_id, result) => {
   });
 };
 
-PoliceStation.getAll = (ps_id, result) => {
-  let query = "SELECT * FROM pstation order by ps_name asc";
+PoliceStation.getAll = (ps_name, result) => {
+  let query = "SELECT * FROM pstation";
 
-  if (ps_id) {
-    query += ` WHERE ps_id = '%${ps_id}%'`;
+  if (ps_name) {
+    query += ` WHERE ps_name like '%${ps_name}%'`;
   }
 
   sql.query(query, (err, res) => {
