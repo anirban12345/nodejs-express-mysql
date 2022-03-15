@@ -23,7 +23,7 @@ PoliceStation.create = (newPoliceStation, result) => {
 };
 
 PoliceStation.findByPSName = (ps_name, result) => {
-  sql.query(`SELECT * FROM pstation WHERE ps_name like '%${ps_name}%'`, (err, res) => {
+  sql.query(`SELECT * FROM pstation WHERE ps_name like '${ps_name}%'`, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
@@ -64,7 +64,7 @@ PoliceStation.getAll = (ps_name, result) => {
   let query = "SELECT * FROM pstation";
 
   if (ps_name) {
-    query += ` WHERE ps_name like '%${ps_name}%'`;
+    query += ` WHERE ps_name like '${ps_name}%'`;
   }
 
   sql.query(query, (err, res) => {
